@@ -44,9 +44,17 @@ nexus 7 32gb là 27944)
 
 
 
-Config sysctl.conf có sự chỉnh sửa theo KTweak của xda-developers
+Config sysctl.conf có sự chỉnh sửa theo KTweak trên github của tytydraco (xda-developers)
 
 
+
+Tham khảo:
+
+https://github.com/tytydraco/KTweak
+
+
+
+File sysctl.conf đã chỉnh sửa
 
 http://www.mediafire.com/file/j32igia3g02x8k6/sysctl.conf/file
 
@@ -201,6 +209,64 @@ net.ipv4.tcp_timestamps=0
 
 
 $ sudo sysctl -p
+
+
+
+$ sudo nano /etc/local.d/cpufreq.start
+
+
+
+# Set the governor to ondemand for all processors
+
+for cpu in /sys/devices/system/cpu/cpufreq/policy*; do
+
+echo ondemand > ${cpu}/scaling_governor
+
+done
+
+
+
+# Reduce the boost ignore_nice_load to 0
+
+echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
+
+
+
+# Reduce the boost io_is_busy to 1
+
+echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+
+
+
+# Reduce the boost powersave_bias to 300 <-- tăng giảm xung của cpu/gpu
+
+echo 300 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+
+
+
+# Reduce the boost sampling_down_factor to 2
+
+echo 2 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+
+
+
+# Reduce the boost sampling_rate to 20000
+
+echo 20000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+
+
+
+# Reduce the boost threshold to 90%
+
+echo 90 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+
+
+
+$ sudo chmod +x /etc/local.d/cpufreq.start
+
+$ sudo rc-update add local default
+
+$ sudo lbu commit
 
 
 
