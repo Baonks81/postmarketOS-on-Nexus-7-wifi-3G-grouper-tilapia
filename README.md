@@ -188,15 +188,15 @@ kernel.sched_child_runs_first=1
 
 kernel.sched_tunable_scaling=0
 
-kernel.sched_latency_ns=1000000
+kernel.sched_latency_ns=4000000
 
-kernel.sched_min_granularity_ns=125000
+kernel.sched_min_granularity_ns=500000
 
 kernel.sched_migration_cost_ns=5000000
 
-kernel.sched_nr_migrate=8
+kernel.sched_nr_migrate=32
 
-kernel.sched_wakeup_granularity_ns=500000
+kernel.sched_wakeup_granularity_ns=2000000
 
 
 
