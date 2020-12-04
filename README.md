@@ -250,9 +250,9 @@ echo 4 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 
 
 
-# Reduce the boost sampling_rate to 100000
+# Reduce the boost sampling_rate to 120000
 
-echo 100000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+echo 120000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
 
 
 
