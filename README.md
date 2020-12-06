@@ -74,7 +74,7 @@ $ sudo nano /etc/sysctl.conf
 
 vm.swappiness=100
 
-vm.vfs_cache_pressure=200
+vm.vfs_cache_pressure=100
 
 vm.dirty_background_bytes=16777216
 
@@ -238,9 +238,9 @@ echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
 
 
-# Reduce the boost powersave_bias to 0 <-- tăng giảm xung của cpu/gpu
+# Reduce the boost powersave_bias to 300 <-- tăng giảm xung của cpu/gpu
 
-echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+echo 300 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
