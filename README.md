@@ -190,11 +190,11 @@ kernel.sched_tunable_scaling=0
 
 kernel.sched_latency_ns=1000000
 
-kernel.sched_min_granularity_ns=100000
+kernel.sched_min_granularity_ns=62500
 
 kernel.sched_migration_cost_ns=5000000
 
-kernel.sched_nr_migrate=4
+kernel.sched_nr_migrate=2
 
 kernel.sched_wakeup_granularity_ns=500000
 
