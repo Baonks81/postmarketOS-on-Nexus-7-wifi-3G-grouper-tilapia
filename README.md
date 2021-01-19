@@ -226,9 +226,9 @@ done
 
 
 
-# Reduce the boost ignore_nice_load to 1
+# Reduce the boost ignore_nice_load to 0
 
-echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
+echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
 
 
 
@@ -244,15 +244,15 @@ echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
-# Reduce the boost sampling_down_factor to 4
+# Reduce the boost sampling_down_factor to 2
 
-echo 4 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+echo 2 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 
 
 
-# Reduce the boost sampling_rate to 120000
+# Reduce the boost sampling_rate to 30000
 
-echo 120000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+echo 30000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
 
 
 
