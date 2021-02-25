@@ -148,7 +148,7 @@ kernel.keys.root_maxbytes=20000
 
 kernel.perf_event_paranoid=1
 
-kernel.perf_cpu_time_max_percent=5
+kernel.perf_cpu_time_max_percent=3
 
 kernel.shmmax=33554432
 
