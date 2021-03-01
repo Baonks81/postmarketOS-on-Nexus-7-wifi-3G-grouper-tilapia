@@ -282,6 +282,12 @@ User-agent:
 
 $ gsettings set org.gnome.Epiphany.web:/org.gnome.epiphany/web/ user-agent 'Mozilla/5.0 (Android 9.0; Mobile; rv:70.0) Gecko/20100101 Firefox/70.0'
 
+Ẩn con trỏ chuột trong xfce4
+$sudo nano /etc/lightdm/lightdm.conf
+
+Bỏ dấu '#' trong [:Seat]
+
+xserver-command=X -nocursor
 
 
 Cài dual boot Android và Ubuntu dùng MultiROM
