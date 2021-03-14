@@ -14,7 +14,7 @@ Trang devs của postmarketOS/pmaports, kernel grouper đã lên 5.9-rc2 mainlin
 
 https://gitlab.com/postmarketOS/pmaports/-/blob/master/device/testing/linux-asus-grouper/APKBUILD
 
-
+Để PC nhận Nexus 7 2012 và flash kernel và push rootfs nhanh thì nên rút hết các thiết bị usb khác ngoài Nexus 7
 
 Install log file
 
