@@ -226,9 +226,9 @@ done
 
 
 
-# Reduce the boost ignore_nice_load to 0
+# Reduce the boost ignore_nice_load to 1
 
-echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
+echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
 
 
 
@@ -238,15 +238,15 @@ echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
 
 
-# Reduce the boost powersave_bias to 0 <-- tăng giảm xung của cpu/gpu
+# Reduce the boost powersave_bias to 300 <-- tăng giảm xung của cpu/gpu
 
-echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+echo 300 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
-# Reduce the boost sampling_down_factor to 2
+# Reduce the boost sampling_down_factor to 4
 
-echo 2 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+echo 4 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 
 
 
