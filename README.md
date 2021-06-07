@@ -74,19 +74,19 @@ $ sudo nano /etc/sysctl.conf
 
 vm.swappiness=100
 
-vm.vfs_cache_pressure=200
+vm.vfs_cache_pressure=1
 
 vm.dirty_background_bytes=16777216
 
 vm.dirty_bytes=33554432
 
-vm.dirty_background_ratio=3
+vm.dirty_background_ratio=70
 
-vm.dirty_ratio=30
+vm.dirty_ratio=90
 
-vm.dirty_writeback_centisecs=3000
+vm.dirty_writeback_centisecs=500
 
-vm.dirty_expire_centisecs=3000
+vm.dirty_expire_centisecs=500
 
 vm.lowmem_reserve_ratio=256 32 32
 
@@ -226,15 +226,15 @@ done
 
 
 
-# Reduce the boost ignore_nice_load to 1
+# Reduce the boost ignore_nice_load to 0
 
-echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
+echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
 
 
 
-# Reduce the boost io_is_busy to 1
+# Reduce the boost io_is_busy to 0
 
-echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
 
 
@@ -244,15 +244,15 @@ echo 300 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
-# Reduce the boost sampling_down_factor to 4
+# Reduce the boost sampling_down_factor to 1
 
-echo 4 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 
 
 
-# Reduce the boost sampling_rate to 30000
+# Reduce the boost sampling_rate to 120000
 
-echo 30000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+echo 120000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
 
 
 
