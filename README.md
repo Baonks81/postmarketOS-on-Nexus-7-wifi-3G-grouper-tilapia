@@ -280,7 +280,7 @@ Epiphany browser và midori khi xem youtube phải uninstall xfce4-pulseaudio-pl
 
 User-agent:
 
-$ gsettings set org.gnome.Epiphany.web:/org.gnome.epiphany/web/ user-agent 'Mozilla/5.0 (Android 9.0; Mobile; rv:70.0) Gecko/20100101 Firefox/70.0'
+$ gsettings set org.gnome.Epiphany.web:/org.gnome.epiphany/web/ user-agent 'Mozilla/5.0 (Android 9.0; Mobile; rv:78.0) Gecko/20100101 Firefox/78.0'
 
 Ẩn con trỏ chuột trong xfce4
 $sudo nano /etc/lightdm/lightdm.conf
@@ -288,6 +288,108 @@ $sudo nano /etc/lightdm/lightdm.conf
 Bỏ dấu '#' trong [:Seat]
 
 xserver-command=X -nocursor
+
+Config firefox-esr 78.11.0 theo mobile-config-firefox của pmOS phosh. Điền about:config vào URL trong firefox, thay đổi các thông số trong searchbox, nếu không có thì thêm mới
+
+
+
+// Set up autoconfig (we use it to copy/update userChrome.css into profile dir)
+
+
+
+general.config.obscure_value → 0
+
+
+
+general.config.sandbox_enabled → false
+
+
+
+// Select a mobile user agent for firefox (same as tor browser on android)
+
+
+
+general.useragent.override → Mozilla/5.0 (Android 9; Mobile; rv:78.0) Gecko/20100101 Firefox/78.0
+
+
+
+Hoặc:
+
+
+
+Mozilla/5.0 (Linux; Android 7.1.2; ME370T) AppleWebkit/537.36 (KHTML; like Gecko) Chrome/91.0.4472.101 Mobile Firefox/78.11.0 Safari/537.36
+
+
+
+// Enable android-style pinch-to-zoom
+
+
+
+dom.w3c.touch_events.enabled → true
+
+
+
+apz.allow_zooming → true
+
+
+
+apz.allow_double_tap_zooming → true
+
+
+
+// Save vertical space by drawing directly in the titlebar
+
+
+
+browser.tabs.drawInTitlebar → true
+
+
+
+// Disable search suggestions
+
+
+
+browser.search.suggest.enabled → false
+
+
+
+// Empty new tab page: faster, less distractions
+
+
+
+browser.newtabpage.enabled → false
+
+
+
+// Allow UI customizations with userChrome.css and userContent.css
+
+
+
+toolkit.legacyUserProfileCustomizations.stylesheets → true
+
+
+
+// Select the entire URL with one click
+
+
+
+browser.urlbar.clickSelectsAll → true
+
+
+
+// Disable cosmetic animations, save CPU
+
+
+
+toolkit.cosmeticAnimations.enabled → false
+
+
+
+// Disable download animations, save CPU
+
+
+
+browser.download.animateNotifications → false
 
 
 Cài dual boot Android và Ubuntu dùng MultiROM
