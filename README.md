@@ -238,9 +238,9 @@ echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
 
 
-# Reduce the boost powersave_bias to 300 <-- tăng giảm xung của cpu/gpu
+# Reduce the boost powersave_bias to 350 <-- tăng giảm xung của cpu/gpu
 
-echo 300 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+echo 350 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
