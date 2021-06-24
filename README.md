@@ -68,145 +68,98 @@ http://www.mediafire.com/file/v65csn6d9gptit2/cpufreq.start/file
 
 $ sudo nano /etc/sysctl.conf
 
-
-
 # content of this file will override /etc/sysctl.d/*
 
-vm.swappiness=100
-
-vm.vfs_cache_pressure=1
-
+vm.swappiness=20
+vm.vfs_cache_pressure=200
 vm.dirty_background_bytes=16777216
-
 vm.dirty_bytes=33554432
-
-vm.dirty_background_ratio=70
-
-vm.dirty_ratio=90
-
-vm.dirty_writeback_centisecs=500
-
-vm.dirty_expire_centisecs=500
-
+vm.dirty_background_ratio=1
+vm.dirty_ratio=2
+vm.dirty_writeback_centisecs=2000
+vm.dirty_expire_centisecs=1000
 vm.lowmem_reserve_ratio=256 32 32
-
-vm.min_free_kbytes=32768
-
-vm.user_reserve_kbytes=32768
-
-vm.admin_reserve_kbytes=16384
-
+vm.min_free_kbytes=4096
+vm.user_reserve_kbytes=8192
+vm.admin_reserve_kbytes=4096
 vm.panic_on_oom=1
-
-kernel.panic=5
-
+kernel.panic=1
+kernel.panic_on_oops=1
 vm.overcommit_memory=0
-
 vm.overcommit_ratio=50
-
 vm.drop_caches=3
-
 vm.laptop_mode=5
-
-vm.mmap_min_addr=32768
-
+vm.mmap_min_addr=8192
 vm.oom_kill_allocating_task=1
-
 vm.extfrag_threshold=750
-
 vm.oom_dump_tasks=0
-
 vm.page-cluster=0
-
 vm.stat-interval=10
-
 vm.compact_unevictable_allowed=0
-
-
 
 # fs.file-max = 76385
 
-
-
 kernel.tainted=0
-
-kernel.threads-max=15502
-
+kernel.threads-max=5000
+#15502
 kernel.usermodehelper.bset=4294967295 4294967295
-
 kernel.usermodehelper.inheritable=4294967295 4294967295
-
 kernel.printk=4 4 1 7
-
 kernel.kptr_restrict=1
-
 kernel.randomize_va_space=2
-
 kernel.keys.root_maxkeys=200
-
 kernel.keys.root_maxbytes=20000
-
 kernel.perf_event_paranoid=1
-
 kernel.perf_cpu_time_max_percent=3
-
-kernel.shmmax=33554432
-
+kernel.shmmax=268435456
+#33554432
 kernel.shmall=2097152
-
-kernel.msgmni=721
-
-kernel.sem=250 32000 32 128
-
+kernel.msgmni=2048
+#721
+kernel.msgmax=64000
+#8192
+kernel.sem=500 512000 64 2048
+#250 32000 32 128
 kernel.auto_msgmni=1
-
 kernel.sched_domain.cpu0.domain0.min_interval=1
-
 kernel.sched_domain.cpu0.domain0.max_interval=4
-
 kernel.sched_domain.cpu0.domain0.busy_factor=64
-
 kernel.sched_domain.cpu1.domain0.min_interval=1
-
 kernel.sched_domain.cpu1.domain0.max_interval=4
-
 kernel.sched_domain.cpu1.domain0.busy_factor=64
-
 kernel.sched_domain.cpu2.domain0.min_interval=1
-
 kernel.sched_domain.cpu2.domain0.max_interval=4
-
 kernel.sched_domain.cpu2.domain0.busy_factor=64
-
 kernel.sched_domain.cpu3.domain0.min_interval=1
-
 kernel.sched_domain.cpu3.domain0.max_interval=4
-
 kernel.sched_domain.cpu3.domain0.busy_factor=64
-
-kernel.sched_child_runs_first=1
-
+kernel.sched_child_runs_first=0
 kernel.sched_tunable_scaling=0
-
-kernel.sched_latency_ns=500000
-
-kernel.sched_min_granularity_ns=100000
-
+kernel.sched_latency_ns=18000000
+kernel.sched_min_granularity_ns=1500000
+#2250000
 kernel.sched_migration_cost_ns=5000000
-
-kernel.sched_nr_migrate=2
-
-kernel.sched_wakeup_granularity_ns=250000
-
-
+#500000
+kernel.sched_nr_migrate=4
+#32
+#kernel.printk_devkmsg=off
+kernel.sched_wakeup_granularity_ns=3000000
+#3000000
+kernel.hung_task_timeout_secs=0
+#120
 
 net.ipv4.tcp_ecn=1
-
 net.ipv4.tcp_fastopen=3
-
 net.ipv4.tcp_timestamps=0
-
-
+net.ipv4.tcp_tw_reuse=1
+net.ipv4.tcp_wmem=6144	87380	524288
+#4096	131072	3930688
+net.ipv4.tcp_rmem=6144	87380	524288
+#4096	131072	3030688
+net.core.wmem_max=524288
+#180244
+net.core.rmem_max=524288
+#180244
 
 $ sudo sysctl -p
 
@@ -232,34 +185,62 @@ echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
 
 
 
-# Reduce the boost io_is_busy to 0
+# Reduce the boost io_is_busy to 1
 
-echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-
-
-
-# Reduce the boost powersave_bias to 350 <-- tăng giảm xung của cpu/gpu
-
-echo 350 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
 
 
-# Reduce the boost sampling_down_factor to 1
+# Reduce the boost powersave_bias to 340 <-- tăng giảm xung của cpu/gpu
 
-echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-
-
-
-# Reduce the boost sampling_rate to 120000
-
-echo 120000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+echo 340 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
-# Reduce the boost threshold to 95%
+# Reduce the boost sampling_down_factor to 10
 
-echo 95 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+echo 10 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 
+
+
+# Reduce the boost sampling_rate to 40000
+
+echo 40000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+
+
+
+# Reduce the boost threshold to 98%
+
+echo 98 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+
+
+for queue in /sys/block/*/queue
+do
+	# Choose the first governor available
+	avail_scheds="$(cat "$queue/scheduler")"
+	for sched in cfq noop kyber bfq mq-deadline none
+	do
+		if [[ "$avail_scheds" == *"$sched"* ]]
+		then
+			echo "$sched" > "$queue/scheduler"
+			break
+		fi
+	done
+
+	# Do not use I/O as a source of randomness
+	# echo 0 > "$queue/add_random"
+
+	# Disable I/O statistics accounting
+	echo 0 > "$queue/iostats"
+
+	# Reduce heuristic read-ahead in exchange for I/O latency
+	echo 32 > "$queue/read_ahead_kb"
+
+	# Reduce the maximum number of I/O requests in exchange for latency
+	echo 32 > "$queue/nr_requests"
+	
+	echo 128 > "$queue/max_sectors_kb"
+done
 
 
 $ sudo chmod +x /etc/local.d/cpufreq.start
