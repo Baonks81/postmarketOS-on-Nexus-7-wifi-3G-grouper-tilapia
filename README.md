@@ -235,10 +235,12 @@ do
 	echo 0 > "$queue/iostats"
 
 	# Reduce heuristic read-ahead in exchange for I/O latency
-	echo 32 > "$queue/read_ahead_kb"
+	echo 0 > "$queue/read_ahead_kb"
 
 	# Reduce the maximum number of I/O requests in exchange for latency
-	echo 32 > "$queue/nr_requests"
+	echo 512 > "$queue/nr_requests"
+
+	echo 2 > "$queue/rq_affinity"
 	
 	echo 128 > "$queue/max_sectors_kb"
 done
