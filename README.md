@@ -96,6 +96,7 @@ vm.oom_dump_tasks=0
 vm.page-cluster=0
 vm.stat-interval=10
 vm.compact_unevictable_allowed=0
+vm.highmem_is_dirtyable=1
 
 # fs.file-max = 76385
 
