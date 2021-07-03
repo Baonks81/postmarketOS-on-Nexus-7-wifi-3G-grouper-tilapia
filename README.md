@@ -76,8 +76,8 @@ vm.dirty_background_bytes=16777216
 vm.dirty_bytes=33554432
 vm.dirty_background_ratio=1
 vm.dirty_ratio=2
-vm.dirty_writeback_centisecs=2000
-vm.dirty_expire_centisecs=1000
+vm.dirty_writeback_centisecs=3000
+vm.dirty_expire_centisecs=3000
 vm.lowmem_reserve_ratio=256 32 32
 vm.min_free_kbytes=4096
 vm.user_reserve_kbytes=8192
@@ -136,15 +136,15 @@ kernel.sched_domain.cpu3.domain0.max_interval=4
 kernel.sched_domain.cpu3.domain0.busy_factor=64
 kernel.sched_child_runs_first=0
 kernel.sched_tunable_scaling=0
-kernel.sched_latency_ns=18000000
-kernel.sched_min_granularity_ns=1500000
+kernel.sched_latency_ns=1000000
+kernel.sched_min_granularity_ns=100000
 #2250000
 kernel.sched_migration_cost_ns=5000000
 #500000
 kernel.sched_nr_migrate=4
 #32
 #kernel.printk_devkmsg=off
-kernel.sched_wakeup_granularity_ns=3000000
+kernel.sched_wakeup_granularity_ns=500000
 #3000000
 kernel.hung_task_timeout_secs=0
 #120
@@ -198,21 +198,21 @@ echo 340 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
-# Reduce the boost sampling_down_factor to 10
+# Reduce the boost sampling_down_factor to 2
 
-echo 10 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-
-
-
-# Reduce the boost sampling_rate to 40000
-
-echo 40000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+echo 2 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 
 
 
-# Reduce the boost threshold to 98%
+# Reduce the boost sampling_rate to 20000
 
-echo 98 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+echo 20000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+
+
+
+# Reduce the boost threshold to 85%
+
+echo 85 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
 
 
 for queue in /sys/block/*/queue
@@ -235,7 +235,7 @@ do
 	echo 0 > "$queue/iostats"
 
 	# Reduce heuristic read-ahead in exchange for I/O latency
-	echo 0 > "$queue/read_ahead_kb"
+	echo 256 > "$queue/read_ahead_kb"
 
 	# Reduce the maximum number of I/O requests in exchange for latency
 	echo 512 > "$queue/nr_requests"
