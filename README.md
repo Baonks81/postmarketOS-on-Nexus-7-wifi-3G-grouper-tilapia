@@ -375,6 +375,82 @@ toolkit.cosmeticAnimations.enabled → false
 
 browser.download.animateNotifications → false
 
+Fix error: (1) not authorized to control networking
+
+
+
+https://wiki.gentoo.org/wiki/NetworkManager#Fixing_nm-applet_insufficient_privileges
+
+
+
+Fixing nm-applet insufficient privileges
+
+If nm-applet fails to create new networks with the error "Insufficient Privileges," then it could be a policy kit issue. Create the following file:
+
+
+
+
+
+FILE: /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules
+
+
+
+polkit.addRule(function(action, subject) {    if (action.id.indexOf("org.freedesktop.NetworkManager.") == 0 && subject.isInGroup("plugdev")) {        return polkit.Result.YES;    } });
+
+
+
+This lets all users in the plugdev group control network manager.
+
+
+
+Control CPU frequency match with thermal, using shell scripts
+
+
+
+https://github.com/Sepero/temp-throttle/tree/4e6fa06ea036129c4a815fc5d4494556578624e1
+
+
+
+Low_temp=max_temp -3
+
+
+
+$ sh temp_throttle.sh 55
+
+
+
+Activate sensor auto rotate screen:
+
+
+
+https://gitlab.com/gullradriel/asus-grouper-nexus-7-sensor-daemon
+
+
+
+$ sudo apk iio-sensor-proxy perl xinput xrandr xset
+
+
+
+$ sudo rc-service -v iio-sensor-proxy start
+
+
+
+$ sudo rc-update add iio-sensor-proxy default
+
+
+
+$ sudo monitor-sensor
+
+
+
+Check all program allow running permission and run
+
+
+
+$ sudo /usr/init.d/asus_grouper_sensors start
+
+
+$ sudo rc-update add asus_grouper_sensors default
 
 Cài dual boot Android và Ubuntu dùng MultiROM
 
