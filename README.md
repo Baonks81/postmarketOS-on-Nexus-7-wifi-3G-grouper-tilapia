@@ -418,6 +418,30 @@ Low_temp=max_temp -3
 $ sh temp_throttle.sh 55
 
 
+Create startup temperature for cpu throttle at login
+
+$ visudo
+
+
+
+ALL ALL=(root) NOPASSWD: /path/to/temp_throttle.sh
+
+
+
+$ sudo chown root /path/to/temp_throttle.sh
+
+
+
+$ sudo chmod 755 /path/to/themp_throttle.sh
+
+
+
+Settings → Sessions and applications startup
+
+
+
+Command: sudo /path/to/temp_throttle.sh 55
+
 
 Activate sensor auto rotate screen:
 
