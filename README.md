@@ -468,7 +468,7 @@ $ sudo rc-update add asus_grouper_sensors default
 *Connecting keyboard and mouse bluetooth, NFC checking:
 
 
-$ sudo apk bluez bluez-utils bluez-mgmt bluez-btmon bluez-hidhci bluez-alsa neard
+$ sudo apk bluez bluez-utils bluez-mgmt bluez-btmon bluez-hid2hci bluez-alsa neard
 
 
 $ sudo rc-service -v bluetooth start
