@@ -423,21 +423,16 @@ Create startup temperature for cpu throttle at login
 $ visudo
 
 
-
 ALL ALL=(root) NOPASSWD: /path/to/temp_throttle.sh
-
 
 
 $ sudo chown root /path/to/temp_throttle.sh
 
 
-
 $ sudo chmod 755 /path/to/themp_throttle.sh
 
 
-
 Settings → Sessions and applications startup
-
 
 
 Command: sudo /path/to/temp_throttle.sh 55
@@ -446,35 +441,59 @@ Command: sudo /path/to/temp_throttle.sh 55
 Activate sensor auto rotate screen:
 
 
-
 https://gitlab.com/gullradriel/asus-grouper-nexus-7-sensor-daemon
-
 
 
 $ sudo apk iio-sensor-proxy perl xinput xrandr xset
 
 
-
 $ sudo rc-service -v iio-sensor-proxy start
-
 
 
 $ sudo rc-update add iio-sensor-proxy default
 
 
-
 $ sudo monitor-sensor
 
 
-
 Check all program allow running permission and run
-
 
 
 $ sudo /usr/init.d/asus_grouper_sensors start
 
 
 $ sudo rc-update add asus_grouper_sensors default
+
+
+*Connecting keyboard and mouse bluetooth, NFC checking:
+
+
+$ sudo apk bluez bluez-utils bluez-mgmt bluez-btmon bluez-hidhci bluez-alsa neard
+
+
+$ sudo rc-service -v bluetooth start
+
+
+$ sudo bluetoothctl power on
+
+
+$ sudo bluetoothctl
+
+
+#<bluetoothctl>: scan on
+
+
+#<bluetoothctl>: help
+
+
+NFC: 
+
+
+$ sudo rc-service -v neard start
+
+
+$ nfctool -d nfc0 -1 -p
+
 
 Cài dual boot Android và Ubuntu dùng MultiROM
 
