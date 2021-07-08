@@ -71,7 +71,7 @@ $ sudo nano /etc/sysctl.conf
 # content of this file will override /etc/sysctl.d/*
 
 vm.swappiness=20
-vm.vfs_cache_pressure=200
+vm.vfs_cache_pressure=80
 vm.dirty_background_bytes=16777216
 vm.dirty_bytes=33554432
 vm.dirty_background_ratio=1
@@ -192,9 +192,9 @@ echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
 
 
-# Reduce the boost powersave_bias to 340 <-- tăng giảm xung của cpu/gpu
+# Reduce the boost powersave_bias to 0 <-- tăng giảm xung của cpu/gpu
 
-echo 340 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
@@ -210,9 +210,9 @@ echo 20000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
 
 
 
-# Reduce the boost threshold to 85%
+# Reduce the boost threshold to 75%
 
-echo 85 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+echo 75 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
 
 
 for queue in /sys/block/*/queue
