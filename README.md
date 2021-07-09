@@ -410,12 +410,7 @@ Control CPU frequency match with thermal, using shell scripts
 https://github.com/Sepero/temp-throttle/tree/4e6fa06ea036129c4a815fc5d4494556578624e1
 
 
-
-Low_temp=max_temp -3
-
-
-
-$ sh temp_throttle.sh 55
+$ sh temp_throttle.sh 53
 
 
 Create startup temperature for cpu throttle at login
@@ -435,7 +430,7 @@ $ sudo chmod 755 /path/to/themp_throttle.sh
 Settings → Sessions and applications startup
 
 
-Command: sudo /path/to/temp_throttle.sh 55
+Command: sudo /path/to/temp_throttle.sh 53
 
 
 Activate sensor auto rotate screen:
