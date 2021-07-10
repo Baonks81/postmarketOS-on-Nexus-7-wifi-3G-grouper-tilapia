@@ -301,7 +301,7 @@ Hoặc:
 
 
 
-Mozilla/5.0 (Linux; Android 7.1.2; ME370T) AppleWebkit/537.36 (KHTML; like Gecko) Chrome/91.0.4472.101 Mobile Firefox/78.11.0 Safari/537.36
+Mozilla/5.0 (Linux; Android 11; Nexus 7) AppleWebkit/537.36 (KHTML; like Gecko) Chrome/91.0.4472.101 Mobile Firefox/78.11.0 Safari/537.36
 
 
 
