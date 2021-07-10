@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Icon=drive-harddisk-solidstate-symbolic.symbolic
+Categories=Utility;
+Name=Clear RAM
+Exec=sudo /usr/bin/clear_ram
+Name[en_US]=Clear RAM
