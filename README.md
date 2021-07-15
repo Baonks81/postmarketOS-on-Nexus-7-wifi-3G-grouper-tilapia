@@ -410,7 +410,15 @@ Control CPU frequency match with thermal, using shell scripts
 https://github.com/Sepero/temp-throttle/tree/4e6fa06ea036129c4a815fc5d4494556578624e1
 
 
-$ sh temp_throttle.sh 53
+TEMPERATURE_PATH="/sys/kernel/debug/tegra_thermal/temp_tj
+
+step freq throttle 400000
+
+Low_temp=max_temp - 1
+
+sleep 1
+
+$ sh temp_throttle.sh 59
 
 
 Create startup temperature for cpu throttle at login
