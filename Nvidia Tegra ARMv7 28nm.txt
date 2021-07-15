@@ -1,0 +1,25 @@
+Nvidia ARMv7 Tegra 28nm
+
+Ubuntu default temperature:
+
+shutdown: 100 degrees, throttle cpu: 95 degrees
+
+
+posmarketOS default temperature:
+
+shutdown: 60 degrees, throttle cpu: 59 degrees(userspace manual)
+
+
+Temperature   GPU  |  CPU freqs     | Tegra cpu core | sensors i2c.4
+ 
+Shutdown     667Mhz 1.3Ghz - 1.7Ghz       > 75 C          > 65 C
+
+High         416Mhz 1Ghz - 1.2Ghz         > 70 C          > 60 C
+
+Boost        416Mhz 760Mhz - 860Mhz       > 60 C          > 50 C
+
+Stable       416Mhz 457Mhz - 640Mhz       > 50 C          > 45 C
+
+Idle         416Mhz 204Mhz - 340Mhz       > 45 C          > 40 C
+
+Lowest       416Mhz 51Mhz - 102Mhz        > 40 C          > 37 C
