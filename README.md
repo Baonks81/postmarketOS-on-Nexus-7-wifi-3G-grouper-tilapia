@@ -239,21 +239,21 @@ echo 0 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
 
 
 
-# Reduce the boost sampling_down_factor to 10
+# Reduce the boost sampling_down_factor to 2
 
-echo 10 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-
-
-
-# Reduce the boost sampling_rate to 40000
-
-echo 40000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+echo 2 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 
 
 
-# Reduce the boost threshold to 95%
+# Reduce the boost sampling_rate to 30000
 
-echo 95 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+echo 30000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+
+
+
+# Reduce the boost threshold to 75%
+
+echo 75 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
 
 
 for queue in /sys/block/*/queue
