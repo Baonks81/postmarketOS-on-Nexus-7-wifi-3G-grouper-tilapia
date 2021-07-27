@@ -70,44 +70,47 @@ $ sudo nano /etc/sysctl.conf
 
 # content of this file will override /etc/sysctl.d/*
 
-vm.swappiness=20
-vm.vfs_cache_pressure=80
+vm.swappiness=100
+vm.vfs_cache_pressure=200
 vm.dirty_background_bytes=16777216
 vm.dirty_bytes=33554432
-vm.dirty_background_ratio=1
-vm.dirty_ratio=2
-vm.dirty_writeback_centisecs=2000
-vm.dirty_expire_centisecs=1000
-vm.lowmem_reserve_ratio=256 32 32
-vm.min_free_kbytes=4096
-vm.user_reserve_kbytes=8192
-vm.admin_reserve_kbytes=4096
-vm.panic_on_oom=1
-kernel.panic=1
+vm.dirty_background_ratio=3
+vm.dirty_ratio=30
+vm.dirty_writeback_centisecs=3000
+vm.dirty_expire_centisecs=3000
+vm.lowmem_reserve_ratio=32 32 
+#256 32 32
+vm.min_free_kbytes=3072
+vm.user_reserve_kbytes=6144
+vm.admin_reserve_kbytes=3072
+vm.panic_on_oom=0
+kernel.panic=10
 kernel.panic_on_oops=1
-vm.overcommit_memory=0
+vm.overcommit_memory=1
 vm.overcommit_ratio=50
-vm.drop_caches=3
-vm.laptop_mode=5
-vm.mmap_min_addr=8192
-vm.oom_kill_allocating_task=1
-vm.extfrag_threshold=750
-vm.oom_dump_tasks=0
+vm.drop_caches=1
+vm.laptop_mode=0
+vm.mmap_min_addr=32768
+vm.oom_kill_allocating_task=0
+vm.extfrag_threshold=500
+vm.oom_dump_tasks=1
 vm.page-cluster=0
-vm.stat-interval=10
+vm.stat_interval=10
 vm.compact_unevictable_allowed=0
-vm.highmem_is_dirtyable=1
+vm.highmem_is_dirtyable=0
 
-# fs.file-max = 76385
-
-kernel.tainted=0
-kernel.threads-max=5000
+kernel.tainted = 0
+kernel.ctrl-alt-del = 1
+kernel.threads-max = 15503
 #15502
+#kernel.random.entropy_avail = 163
+kernel.random.write_wakeup_threshold = 128
 kernel.usermodehelper.bset=4294967295 4294967295
 kernel.usermodehelper.inheritable=4294967295 4294967295
-kernel.printk=4 4 1 7
-kernel.kptr_restrict=1
-kernel.randomize_va_space=2
+kernel.printk = 15 4 1 7
+kernel.kptr_restrict = 2
+kernel.randomize_va_space = 2
+kernel.perf_event_paranoid = 3
 kernel.keys.root_maxkeys=200
 kernel.keys.root_maxbytes=20000
 kernel.perf_event_paranoid=1
@@ -134,33 +137,71 @@ kernel.sched_domain.cpu2.domain0.busy_factor=64
 kernel.sched_domain.cpu3.domain0.min_interval=1
 kernel.sched_domain.cpu3.domain0.max_interval=4
 kernel.sched_domain.cpu3.domain0.busy_factor=64
-kernel.sched_child_runs_first=0
+kernel.sched_child_runs_first=1
 kernel.sched_tunable_scaling=0
-kernel.sched_latency_ns=18000000
-kernel.sched_min_granularity_ns=1500000
+kernel.sched_latency_ns=1000000
+kernel.sched_min_granularity_ns=100000
 #2250000
-kernel.sched_migration_cost_ns=5000000
+kernel.sched_migration_cost_ns=500000
 #500000
 kernel.sched_nr_migrate=4
 #32
 #kernel.printk_devkmsg=off
-kernel.sched_wakeup_granularity_ns=3000000
+kernel.sched_wakeup_granularity_ns=500000
 #3000000
 kernel.hung_task_timeout_secs=0
 #120
+
+#fs.inode-nr = 17203     1187
+#4737	2
+#fs.inode-state = 17203  1187    0       0       0       0       0
+#4745	2	0	0	0	0	0
+#fs.file-nr = 5707       0       99200
+#3936	0	76345
+fs.file-max = 99200
+#76385
+#fs.dentry-state = 17170 4866    45      0       0       0
+#6867	4363	45	0	1974	0
+fs.epoll.max_user_watches = 138922
+#174962
+
+net.core.somaxconn = 128
+#4096
+
+net.core.wmem_max = 131072
+net.core.rmem_max = 131072
+#524288
+
+net.core.wmem_default = 112640
+net.core.rmem_default = 112640
+#180224
+
+net.core.warnings = 1
+#0
+
+#net.ipv4.route.gc_thresh = 16384 #-1
+#net.ipv4.route.max_size = 262144 #2147483647
+#net.ipv4.neigh.default.base_reachable_time = 15 #30
+#net.ipv4.neigh.default.unres_qlen = 3 #91
+#net.ipv4.neigh.default.base_reachable_time_ms = 15000 #30000
+#net.ipv4.neigh.lo.base_reachable_time = 15 #30
+#net.ipv4.neigh.lo.unres_qlen = 3 #91
+#net.ipv4.neigh.lo.base_reachable_time_ms = 15000 #30000
 
 net.ipv4.tcp_ecn=1
 net.ipv4.tcp_fastopen=3
 net.ipv4.tcp_timestamps=0
 net.ipv4.tcp_tw_reuse=1
-net.ipv4.tcp_wmem=6144	87380	524288
-#4096	131072	3930688
-net.ipv4.tcp_rmem=6144	87380	524288
+
+net.ipv4.tcp_wmem=1536	21845	131072
+net.ipv4.tcp_rmem=1536	21845	131072
+#6144	87380	524288
 #4096	131072	3030688
-net.core.wmem_max=524288
-#180244
-net.core.rmem_max=524288
-#180244
+
+#net.core.wmem_max=131071
+#net.core.rmem_max=131071
+#524288
+#180224
 
 $ sudo sysctl -p
 
